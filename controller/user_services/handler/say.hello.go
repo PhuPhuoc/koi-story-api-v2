@@ -15,5 +15,5 @@ import (
 // @Success		200	{object}	string	"say hi"
 // @Router			/users/hello [get]
 func sayHello(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"hello": "hello from Phu Phuoc"})
+	c.JSON(http.StatusOK, gin.H{"hello": "This is greeting from Phu Phuoc linux server"})
 }
