@@ -43,7 +43,7 @@ func (sv *server) RunApp() error {
 }
 
 func (sv *server) runLog() {
-	fmt.Printf("\nFor development: http://localhost%s/swagger/index.html\n", sv.address)
+	fmt.Printf("\nFor development: http://localhost%s/swagger/index.html\n\n", sv.address)
 }
 
 func (sv *server) registerRoutes(v1 *gin.RouterGroup) {
