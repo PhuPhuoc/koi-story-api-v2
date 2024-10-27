@@ -3,6 +3,7 @@ package api
 import (
 	"fmt"
 
+	fatehandler "github.com/PhuPhuoc/koi-story-api-v2/controller/fate_services/handler"
 	userhandler "github.com/PhuPhuoc/koi-story-api-v2/controller/user_services/handler"
 	docs "github.com/PhuPhuoc/koi-story-api-v2/docs"
 	"github.com/gin-contrib/cors"
@@ -48,4 +49,5 @@ func (sv *server) runLog() {
 
 func (sv *server) registerRoutes(v1 *gin.RouterGroup) {
 	userhandler.RegisterUserRoutes(v1, sv.db)
+	fatehandler.RegisterFatesRoutes(v1, sv.db)
 }

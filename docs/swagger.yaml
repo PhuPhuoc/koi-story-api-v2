@@ -1,8 +1,143 @@
+definitions:
+  fatemodel.GenerateUserFengshui:
+    properties:
+      user_id:
+        type: string
+      year_of_birth:
+        type: integer
+    type: object
+  usermodel.Register:
+    properties:
+      confirm_password:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  usermodel.SellerInfo:
+    properties:
+      address:
+        type: string
+      location:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  usermodel.UserLogin:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
 info:
   contact: {}
   title: Koi Story API
   version: "1.0"
 paths:
+  /fates:
+    get:
+      consumes:
+      - application/json
+      description: get list fates
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: get list fates
+      tags:
+      - fates
+  /fates/user:
+    post:
+      consumes:
+      - application/json
+      description: generate user fate
+      parameters:
+      - description: User info for generate feng shui
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/fatemodel.GenerateUserFengshui'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: generate user fate
+      tags:
+      - fates
+  /users/{user_id}/sellers:
+    get:
+      consumes:
+      - application/json
+      description: get list seller information
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: get list seller information
+      tags:
+      - users
+    post:
+      consumes:
+      - application/json
+      description: register new seller information
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      - description: Seller register data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/usermodel.SellerInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: register new seller information
+      tags:
+      - users
   /users/hello:
     get:
       consumes:
@@ -16,6 +151,58 @@ paths:
           schema:
             type: string
       summary: hello
+      tags:
+      - users
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: User login
+      parameters:
+      - description: User log in info
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/usermodel.UserLogin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: user data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: User login
+      tags:
+      - users
+  /users/register:
+    post:
+      consumes:
+      - application/json
+      description: register new account
+      parameters:
+      - description: User register data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/usermodel.Register'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: register new account
       tags:
       - users
 swagger: "2.0"

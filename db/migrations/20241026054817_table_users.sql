@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS `users` (
     `avatar` VARCHAR(255),
     `role` ENUM('admin', 'user', 'member'),
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `deleted_at` DATETIME
+    `deleted_at` DATETIME,
+    UNIQUE(`email`)
 );
 -- +goose StatementEnd
 
