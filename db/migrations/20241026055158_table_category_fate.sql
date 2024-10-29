@@ -1,6 +1,6 @@
 -- +goose Up
 -- +goose StatementBegin
-CREATE TABLE IF NOT EXISTS `category_face` (
+CREATE TABLE IF NOT EXISTS `category_fate` (
     `category_id` VARCHAR(100),
     `fate_id` VARCHAR(100),
     PRIMARY KEY (`category_id`, `fate_id`),
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `category_face` (
 
 -- +goose Down
 -- +goose StatementBegin
-ALTER TABLE `category_face` DROP FOREIGN KEY `fk_category_face_category`;
-ALTER TABLE `category_face` DROP FOREIGN KEY `fk_category_face_fate`;
-DROP TABLE IF EXISTS `category_face`;
+ALTER TABLE `category_fate` DROP FOREIGN KEY `fk_category_face_category`;
+ALTER TABLE `category_fate` DROP FOREIGN KEY `fk_category_face_fate`;
+DROP TABLE IF EXISTS `category_fate`;
 -- +goose StatementEnd

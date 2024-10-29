@@ -1,15 +1,13 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS `markets` (
-    `id` VARCHAR(100) PRIMARY KEY,
-    `post_id` VARCHAR(100) NOT NULL,
-    `seller_id` VARCHAR(100) NOT NULL,
+    `post_id` VARCHAR(100) PRIMARY KEY,
     `product_name` VARCHAR(255) NOT NULL,
     `price` INT NOT NULL,
     `product_type` ENUM('koi', 'decoration', 'other'),
     `color` VARCHAR(255) NOT NULL,
     `origin` VARCHAR(255) NOT NULL,
-    `describe` TEXT NOT NULL,
+    `description` TEXT NOT NULL,
     CONSTRAINT `fk_markets_posts`
     FOREIGN KEY (`post_id`) REFERENCES `posts`(`id`)
     ON DELETE CASCADE ON UPDATE CASCADE

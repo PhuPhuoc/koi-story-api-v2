@@ -1,11 +1,10 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS `blogs` (
-    `id` VARCHAR(100) PRIMARY KEY,
-    `post_id` VARCHAR(100) NOT NULL,
+    `post_id` VARCHAR(100) PRIMARY KEY,
     `category_id` VARCHAR(100) NOT NULL,
     `author_name` VARCHAR(100) NOT NULL,
-    `content` TEXT NOT NULL,
+    `content` LONGTEXT NOT NULL,
     CONSTRAINT `fk_blogs_posts`
     FOREIGN KEY (`post_id`) REFERENCES `posts`(`id`)
     ON DELETE CASCADE ON UPDATE CASCADE,

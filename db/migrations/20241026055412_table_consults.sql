@@ -1,8 +1,7 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS `consults` (
-    `id` VARCHAR(100) PRIMARY KEY,
-    `post_id` VARCHAR(100) NOT NULL,
+    `post_id` VARCHAR(100) PRIMARY KEY,
     `user_fengshui_id` VARCHAR(100) NOT NULL,
     `title` VARCHAR(200) NOT NULL,
     `content` TEXT NOT NULL,

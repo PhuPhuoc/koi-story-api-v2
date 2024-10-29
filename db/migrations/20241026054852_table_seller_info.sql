@@ -1,8 +1,7 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS `seller_info` (
-    `id` VARCHAR(100) PRIMARY KEY,
-    `user_id` VARCHAR(100),
+    `user_id` VARCHAR(100) PRIMARY KEY,
     `phone_number` VARCHAR(20) NOT NULL,
     `location` VARCHAR(40) NOT NULL,
     `address` VARCHAR(100) NOT NULL,

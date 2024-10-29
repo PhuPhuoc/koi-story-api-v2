@@ -17,3 +17,4 @@ CREATE TABLE IF NOT EXISTS `posts` (
 ALTER TABLE `posts` DROP FOREIGN KEY `fk_posts_users`;
 DROP TABLE IF EXISTS `posts`;
 -- +goose StatementEnd
+

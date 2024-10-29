@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS `categories` (
     `id` VARCHAR(100) PRIMARY KEY,
     `name` VARCHAR(200) NOT NULL,
-    `describe` TEXT
+    `description` TEXT
 );
 -- +goose StatementEnd
 
