@@ -29,6 +29,11 @@ definitions:
       year_of_birth:
         type: integer
     type: object
+  imagemodel.AddImageModel:
+    properties:
+      image_url:
+        type: string
+    type: object
   marketmodel.FormCreatePostMarket:
     properties:
       color:
@@ -257,6 +262,31 @@ paths:
       summary: generate user fate
       tags:
       - fates
+  /images/{image_id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete image
+      parameters:
+      - description: Image ID
+        in: path
+        name: image_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: delete image
+      tags:
+      - images
   /post-market:
     get:
       consumes:
@@ -381,6 +411,37 @@ paths:
       summary: create new comment
       tags:
       - comments
+  /posts/{post_id}/images:
+    post:
+      consumes:
+      - application/json
+      description: add new image into post
+      parameters:
+      - description: Post ID
+        in: path
+        name: post_id
+        required: true
+        type: string
+      - description: image url
+        in: body
+        name: images
+        required: true
+        schema:
+          $ref: '#/definitions/imagemodel.AddImageModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: add new image into post
+      tags:
+      - images
   /users/{user_id}/sellers:
     get:
       consumes:

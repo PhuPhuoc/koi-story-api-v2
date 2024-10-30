@@ -58,7 +58,7 @@ func (store *marketStore) GetPostMarketDetails(post_id string) (obj *marketmodel
 		return nil, fmt.Errorf("cannot get seller's detail: %w", err)
 	}
 	query_image := `
-		select id, image_url from images where post_id=?
+		select id, image_url from images where post_id=? and deleted_at is null order by image_order
 	`
 	if err = tx.Select(&obj.ListImage, query_image, obj.ID); err != nil {
 		return nil, fmt.Errorf("cannot get list images of market's post: %w", err)

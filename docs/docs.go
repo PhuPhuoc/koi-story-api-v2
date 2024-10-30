@@ -274,6 +274,43 @@ const docTemplate = `{
                 }
             }
         },
+        "/images/{image_id}": {
+            "delete": {
+                "description": "delete image",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "images"
+                ],
+                "summary": "delete image",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Image ID",
+                        "name": "image_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "message success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/post-market": {
             "get": {
                 "description": "get market's posts",
@@ -439,6 +476,52 @@ const docTemplate = `{
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/commentmodel.CreateComment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "message success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/posts/{post_id}/images": {
+            "post": {
+                "description": "add new image into post",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "images"
+                ],
+                "summary": "add new image into post",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Post ID",
+                        "name": "post_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "image url",
+                        "name": "images",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/imagemodel.AddImageModel"
                         }
                     }
                 ],
@@ -685,6 +768,14 @@ const docTemplate = `{
                 },
                 "year_of_birth": {
                     "type": "integer"
+                }
+            }
+        },
+        "imagemodel.AddImageModel": {
+            "type": "object",
+            "properties": {
+                "image_url": {
+                    "type": "string"
                 }
             }
         },

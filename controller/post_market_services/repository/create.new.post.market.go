@@ -54,7 +54,7 @@ func (store *marketStore) CreateNewPost(input *marketmodel.FormCreatePostMarket)
 	for index, url := range input.ListImageUrls {
 		imgID := uuid.New().String()
 		if _, err = tx.Exec(queryImage, imgID, postID, url, index); err != nil {
-			return fmt.Errorf("cannot insert image in post: %w", err)
+			return fmt.Errorf("cannot insert image into post: %w", err)
 		}
 	}
 	return nil

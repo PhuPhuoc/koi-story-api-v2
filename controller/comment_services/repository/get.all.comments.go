@@ -29,6 +29,7 @@ func (store *commentStore) GetAllComment(post_id string) (data []commentmodel.Co
 		from comments c
 		join users u on c.user_id=u.id
 		where post_id=? and c.deleted_at is null
+		order by c.created_at desc 
 	`
 	if err = tx.Select(&data, query_comment, post_id); err != nil {
 		return nil, fmt.Errorf("cannot get comments: %w", err)

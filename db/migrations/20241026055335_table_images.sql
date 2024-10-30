@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS `images` (
     `id` VARCHAR(100) PRIMARY KEY,
     `post_id` VARCHAR(100) NOT NULL,
-    `image_url` VARCHAR(100),
+    `image_url` VARCHAR(255),
     `image_order` TINYINT NOT NULL,
     `deleted_at` DATETIME,
     CONSTRAINT `fk_images_posts`
