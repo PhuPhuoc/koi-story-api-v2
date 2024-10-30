@@ -10,6 +10,13 @@ definitions:
       name:
         type: string
     type: object
+  commentmodel.CreateComment:
+    properties:
+      content:
+        type: string
+      user_id:
+        type: string
+    type: object
   fatemodel.GenerateUserFengshui:
     properties:
       user_id:
@@ -259,6 +266,61 @@ paths:
       summary: get detail market's posts
       tags:
       - post market
+  /posts/{post_id}/comments:
+    get:
+      consumes:
+      - application/json
+      description: Get all comments in a post
+      parameters:
+      - description: Post ID
+        in: path
+        name: post_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: Get all comments in a post
+      tags:
+      - comments
+    post:
+      consumes:
+      - application/json
+      description: create new comment
+      parameters:
+      - description: Post ID
+        in: path
+        name: post_id
+        required: true
+        type: string
+      - description: comment information
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/commentmodel.CreateComment'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: create new comment
+      tags:
+      - comments
   /users/{user_id}/sellers:
     get:
       consumes:
