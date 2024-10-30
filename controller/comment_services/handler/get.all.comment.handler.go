@@ -9,16 +9,16 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-//	@BasePath		/api/v1
-//	@Summary		Get all comments in a post
-//	@Description	Get all comments in a post
-//	@Tags			comments
-//	@Accept			json
-//	@Produce		json
-//	@Param			post_id	path		string					true	"Post ID"
-//	@Success		200		{object}	map[string]interface{}	"message success"
-//	@Failure		400		{object}	error					"Bad request error"
-//	@Router			/posts/{post_id}/comments [get]
+// @BasePath		/api/v1
+// @Summary		Get all comments in a post
+// @Description	Get all comments in a post
+// @Tags			comments
+// @Accept			json
+// @Produce		json
+// @Param			post_id	path		string					true	"Post ID"
+// @Success		200		{object}	map[string]interface{}	"message success"
+// @Failure		400		{object}	error					"Bad request error"
+// @Router			/posts/{post_id}/comments [get]
 func getAllCommentHandler(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		post_id := c.Param("post_id")
@@ -26,7 +26,7 @@ func getAllCommentHandler(db *sqlx.DB) gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "User ID is required"})
 			return
 		}
-		repo := commentrepository.NewUserStore(db)
+		repo := commentrepository.NewCommentStore(db)
 		data, err := repo.GetAllComment(post_id)
 		if err != nil {
 			utils.SendError(c, http.StatusBadRequest, "cannot add new comment into post", err.Error())

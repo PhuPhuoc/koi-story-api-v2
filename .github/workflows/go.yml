@@ -40,13 +40,6 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
           script: |
-            # check internet connection to Docker Hub
-            #if ! ping -c 3 registry-1.docker.io; then
-                #echo "Kết nối mạng đến Docker Hub thất bại. Thoát."
-                #exit 1
-            #fi
-
-            # retry 3 times when pulling Docker image with maximum wait time of 60 second each time
             RETRY_COUNT=0
             MAX_RETRIES=3
             until [ $RETRY_COUNT -ge $MAX_RETRIES ]

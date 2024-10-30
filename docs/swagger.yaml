@@ -17,6 +17,11 @@ definitions:
       user_id:
         type: string
     type: object
+  commentmodel.UpdateComment:
+    properties:
+      content:
+        type: string
+    type: object
   fatemodel.GenerateUserFengshui:
     properties:
       user_id:
@@ -152,6 +157,61 @@ paths:
       summary: register new category
       tags:
       - categories
+  /comments/{comment_id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete comment
+      parameters:
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: delete comment
+      tags:
+      - comments
+    put:
+      consumes:
+      - application/json
+      description: update comment
+      parameters:
+      - description: Comment ID
+        in: path
+        name: comment_id
+        required: true
+        type: string
+      - description: comment's content update
+        in: body
+        name: comment
+        required: true
+        schema:
+          $ref: '#/definitions/commentmodel.UpdateComment'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: update comment
+      tags:
+      - comments
   /fates:
     get:
       consumes:
@@ -303,7 +363,7 @@ paths:
         type: string
       - description: comment information
         in: body
-        name: user
+        name: comment
         required: true
         schema:
           $ref: '#/definitions/commentmodel.CreateComment'

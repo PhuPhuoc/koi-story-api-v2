@@ -10,6 +10,8 @@ func RegisterCommentRoutes(rg *gin.RouterGroup, db *sqlx.DB) {
 	{
 		eg.POST("", createCommentHandler(db))
 		eg.GET("", getAllCommentHandler(db))
-
 	}
+	rg.DELETE("comments/:comment_id", deleteCommentHandler(db))
+	rg.PUT("comments/:comment_id", updateCommentHandler(db))
+
 }

@@ -17,7 +17,7 @@ import (
 //	@Accept			json
 //	@Produce		json
 //	@Param			post_id	path		string						true	"Post ID"
-//	@Param			user	body		commentmodel.CreateComment	true	"comment information"
+//	@Param			comment	body		commentmodel.CreateComment	true	"comment information"
 //	@Success		200		{object}	map[string]interface{}		"message success"
 //	@Failure		400		{object}	error						"Bad request error"
 //	@Router			/posts/{post_id}/comments [post]
@@ -33,7 +33,7 @@ func createCommentHandler(db *sqlx.DB) gin.HandlerFunc {
 			utils.SendError(c, http.StatusBadRequest, "invalid request body", "")
 			return
 		}
-		repo := commentrepository.NewUserStore(db)
+		repo := commentrepository.NewCommentStore(db)
 		if err := repo.CreateNewComment(post_id, &req); err != nil {
 			utils.SendError(c, http.StatusBadRequest, "cannot add new comment into post", err.Error())
 			return
