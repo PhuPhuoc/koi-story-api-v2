@@ -30,12 +30,12 @@ func registerSellerHandler(db *sqlx.DB) gin.HandlerFunc {
 		}
 		var req usermodel.SellerInfo
 		if err := c.ShouldBindJSON(&req); err != nil {
-			utils.SendError(c, http.StatusBadRequest, "invalid request body")
+			utils.SendError(c, http.StatusBadRequest, "invalid request body", "")
 			return
 		}
 		repo := userrepository.NewUserStore(db)
 		if err := repo.RegisterSeller(user_id, &req); err != nil {
-			utils.SendError(c, http.StatusBadRequest, err.Error())
+			utils.SendError(c, http.StatusBadRequest, "cannot register new seller profile", err.Error())
 			return
 		}
 		utils.SendSuccess(c, http.StatusOK, "new account registration successful", nil, nil)

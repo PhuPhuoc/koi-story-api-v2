@@ -13,6 +13,7 @@ type SuccessResponse struct {
 type ErrorResponse struct {
 	Status  int    `json:"status"`
 	Message string `json:"error"`
+	Log     string `json:"log"`
 }
 
 // SendSuccess is a helper function to send success responses with optional pagination
@@ -26,10 +27,11 @@ func SendSuccess(c *gin.Context, status int, message string, data any, paginatio
 	c.JSON(status, response)
 }
 
-func SendError(c *gin.Context, status int, message string) {
+func SendError(c *gin.Context, status int, message string, log string) {
 	response := ErrorResponse{
 		Status:  status,
 		Message: message,
+		Log:     log,
 	}
 	c.JSON(status, response)
 }

@@ -29,7 +29,7 @@ func getSellersHandler(db *sqlx.DB) gin.HandlerFunc {
 		repo := userrepository.NewUserStore(db)
 		list_seller, err := repo.GetSellerInfo(user_id)
 		if err != nil {
-			utils.SendError(c, http.StatusBadRequest, err.Error())
+			utils.SendError(c, http.StatusBadRequest, "cannot get seller info", err.Error())
 			return
 		}
 		utils.SendSuccess(c, http.StatusOK, "Get data successfully", list_seller, nil)

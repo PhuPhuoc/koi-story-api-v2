@@ -23,7 +23,7 @@ func getFatesHandler(db *sqlx.DB) gin.HandlerFunc {
 		repo := faterepository.NewFateStore(db)
 		list_fate, err := repo.GetFates()
 		if err != nil {
-			utils.SendError(c, http.StatusBadRequest, err.Error())
+			utils.SendError(c, http.StatusBadRequest, "cannot get list fates", err.Error())
 			return
 		}
 		utils.SendSuccess(c, http.StatusOK, "Get data successfully", list_fate, nil)

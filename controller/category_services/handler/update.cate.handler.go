@@ -30,12 +30,12 @@ func updateCategoryHandler(db *sqlx.DB) gin.HandlerFunc {
 		}
 		var req categorymodel.CategoryForCreateAndUpdate
 		if err := c.ShouldBindJSON(&req); err != nil {
-			utils.SendError(c, http.StatusBadRequest, "invalid request body")
+			utils.SendError(c, http.StatusBadRequest, "invalid request body", "")
 			return
 		}
 		repo := categoryrepository.NewCategoryStore(db)
 		if err := repo.UpdateCategory(cate_id, &req); err != nil {
-			utils.SendError(c, http.StatusBadRequest, err.Error())
+			utils.SendError(c, http.StatusBadRequest, "cannot update category", err.Error())
 			return
 		}
 		utils.SendSuccess(c, http.StatusOK, "category updated successfully", nil, nil)

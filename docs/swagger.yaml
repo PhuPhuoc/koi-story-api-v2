@@ -23,8 +23,6 @@ definitions:
         type: string
       description:
         type: string
-      id:
-        type: string
       listImageUrls:
         items:
           type: string
@@ -193,6 +191,24 @@ paths:
       tags:
       - fates
   /post-market:
+    get:
+      consumes:
+      - application/json
+      description: get market's posts
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: get market's posts
+      tags:
+      - post market
     post:
       consumes:
       - application/json
@@ -216,6 +232,31 @@ paths:
           description: Bad request error
           schema: {}
       summary: create new post market
+      tags:
+      - post market
+  /post-market/{post_id}:
+    get:
+      consumes:
+      - application/json
+      description: get detail market's posts
+      parameters:
+      - description: Post ID
+        in: path
+        name: post_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: get detail market's posts
       tags:
       - post market
   /users/{user_id}/sellers:

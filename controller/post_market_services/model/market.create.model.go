@@ -1,11 +1,11 @@
 package marketmodel
 
 type PostOfMarketCreation struct {
-	ID        string `db:"id" json:"id"`
+	ID        string `db:"id" json:"-"`
 	UserID    string `db:"user_id" json:"user_id"`
 	PostType  string `db:"post_type" json:"-"`
 	CreatedAt string `db:"created_at" json:"-"`
-}
+}	
 
 type MarketCreation struct {
 	PostID      string `db:"post_id" json:"-"`

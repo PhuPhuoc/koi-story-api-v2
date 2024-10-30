@@ -194,6 +194,32 @@ const docTemplate = `{
             }
         },
         "/post-market": {
+            "get": {
+                "description": "get market's posts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post market"
+                ],
+                "summary": "get market's posts",
+                "responses": {
+                    "200": {
+                        "description": "data",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            },
             "post": {
                 "description": "create new post market",
                 "consumes": [
@@ -220,6 +246,43 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "message success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/post-market/{post_id}": {
+            "get": {
+                "description": "get detail market's posts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post market"
+                ],
+                "summary": "get detail market's posts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Post ID",
+                        "name": "post_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "data",
                         "schema": {
                             "type": "object",
                             "additionalProperties": true
@@ -451,9 +514,6 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "description": {
-                    "type": "string"
-                },
-                "id": {
                     "type": "string"
                 },
                 "listImageUrls": {
