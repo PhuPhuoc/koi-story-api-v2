@@ -41,10 +41,10 @@ jobs:
           port: 22
           script: |
             # check internet connection to Docker Hub
-            if ! ping -c 3 registry-1.docker.io; then
-                echo "Kết nối mạng đến Docker Hub thất bại. Thoát."
-                exit 1
-            fi
+            #if ! ping -c 3 registry-1.docker.io; then
+                #echo "Kết nối mạng đến Docker Hub thất bại. Thoát."
+                #exit 1
+            #fi
 
             # retry 3 times when pulling Docker image with maximum wait time of 60 second each time
             RETRY_COUNT=0
@@ -55,9 +55,9 @@ jobs:
                   echo "Pull image successfully."
                   break
               else
-                  echo "Image pull failed. Try again in 7 seconds..."
+                  echo "Image pull failed. Try again in 10 seconds..."
                   RETRY_COUNT=$((RETRY_COUNT + 1))
-                  sleep 7
+                  sleep 10
               fi
             done
 
