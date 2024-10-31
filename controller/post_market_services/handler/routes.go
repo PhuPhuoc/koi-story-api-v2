@@ -11,6 +11,6 @@ func RegisterPostMarketRoutes(rg *gin.RouterGroup, db *sqlx.DB) {
 		eg.GET("", getPostMarketHandler(db))
 		eg.GET("/:post_id", getDetailPostMarketHandler(db))
 		eg.POST("", createNewPostMarketHandler(db))
-
+		eg.PUT("/:post_id", updatePostMarketHandler(db))
 	}
 }

@@ -55,6 +55,21 @@ definitions:
       user_id:
         type: string
     type: object
+  marketmodel.MarketInfoUpdate:
+    properties:
+      color:
+        type: string
+      description:
+        type: string
+      origin:
+        type: string
+      price:
+        type: integer
+      product_name:
+        type: string
+      product_type:
+        type: string
+    type: object
   usermodel.Register:
     properties:
       confirm_password:
@@ -354,6 +369,36 @@ paths:
           description: Bad request error
           schema: {}
       summary: get detail market's posts
+      tags:
+      - post market
+    put:
+      consumes:
+      - application/json
+      description: update market
+      parameters:
+      - description: Post ID
+        in: path
+        name: post_id
+        required: true
+        type: string
+      - description: User register data
+        in: body
+        name: info
+        required: true
+        schema:
+          $ref: '#/definitions/marketmodel.MarketInfoUpdate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: update market
       tags:
       - post market
   /posts/{post_id}/comments:
