@@ -274,6 +274,43 @@ const docTemplate = `{
                 }
             }
         },
+        "/fates/user/{user_id}": {
+            "get": {
+                "description": "get user fate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "fates"
+                ],
+                "summary": "get user fate",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User ID",
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "message success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/images/{image_id}": {
             "delete": {
                 "description": "delete image",
@@ -364,6 +401,43 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "message success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/post-market/user/{user_id}": {
+            "get": {
+                "description": "get my market's posts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post market"
+                ],
+                "summary": "get my market's posts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User ID",
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "data",
                         "schema": {
                             "type": "object",
                             "additionalProperties": true

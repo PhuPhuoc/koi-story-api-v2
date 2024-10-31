@@ -2,7 +2,6 @@
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS `consults` (
     `post_id` VARCHAR(100) PRIMARY KEY,
-    `user_fengshui_id` VARCHAR(100) NOT NULL,
     `title` VARCHAR(200) NOT NULL,
     `content` TEXT NOT NULL,
     CONSTRAINT `fk_consults_posts`

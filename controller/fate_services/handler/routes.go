@@ -10,5 +10,7 @@ func RegisterFatesRoutes(rg *gin.RouterGroup, db *sqlx.DB) {
 	{
 		eg.GET("", getFatesHandler(db))
 		eg.POST("/user", generateUserFateHandler(db))
+		eg.GET("/user/:user_id", getUserFateHandler(db))
+
 	}
 }

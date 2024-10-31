@@ -2,16 +2,17 @@
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS `fates` (
     `id` VARCHAR(100) PRIMARY KEY,
-    `name` VARCHAR(50)
+    `element` VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS `user_fengshui` (
     `id` VARCHAR(100) PRIMARY KEY,
     `user_id` VARCHAR(100),
+    `gender` BOOLEAN NOT NULL,
     `year_of_birth` SMALLINT NOT NULL,
-    `fate_id` VARCHAR(100),
-    `heavenly_stem` VARCHAR(50),
-    `earthly_branch` VARCHAR(50),
+    `fate_id` VARCHAR(100) NOT NULL,
+    `direction` VARCHAR(50),
+    `cung_phi` VARCHAR(50),
     CONSTRAINT `fk_user_fengshui_users`
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
     ON DELETE CASCADE ON UPDATE CASCADE,
