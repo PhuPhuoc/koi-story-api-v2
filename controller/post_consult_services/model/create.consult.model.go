@@ -16,5 +16,5 @@ type PostOfConsultModel struct {
 type ConsultModel struct {
 	PostID  string `db:"post_id" json:"-"`
 	Title   string `db:"title" json:"title"`
-	Content int    `db:"content" json:"content"`
+	Content string `db:"content" json:"content"`
 }

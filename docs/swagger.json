@@ -339,6 +339,154 @@
                 }
             }
         },
+        "/post-consult": {
+            "get": {
+                "description": "get consult's posts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post consult"
+                ],
+                "summary": "get consult's posts",
+                "responses": {
+                    "200": {
+                        "description": "data",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            },
+            "post": {
+                "description": "create new post consult",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post consult"
+                ],
+                "summary": "create new post consult",
+                "parameters": [
+                    {
+                        "description": "User register data",
+                        "name": "consult",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/consultmodel.CreateConsultModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "message success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/post-consult/user/{user_id}": {
+            "get": {
+                "description": "get my consult's posts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post consult"
+                ],
+                "summary": "get my consult's posts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User ID",
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "data",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/post-consult/{post_id}": {
+            "put": {
+                "description": "update post consult",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post consult"
+                ],
+                "summary": "update post consult",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Post ID",
+                        "name": "post_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "User register data",
+                        "name": "consult",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/consultmodel.ModelUpdateConsult"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "message success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/post-market": {
             "get": {
                 "description": "get market's posts",
@@ -865,6 +1013,37 @@
             "type": "object",
             "properties": {
                 "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "consultmodel.CreateConsultModel": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "listImageUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "consultmodel.ModelUpdateConsult": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "title": {
                     "type": "string"
                 }
             }

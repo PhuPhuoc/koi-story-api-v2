@@ -22,6 +22,26 @@ definitions:
       content:
         type: string
     type: object
+  consultmodel.CreateConsultModel:
+    properties:
+      content:
+        type: string
+      listImageUrls:
+        items:
+          type: string
+        type: array
+      title:
+        type: string
+      user_id:
+        type: string
+    type: object
+  consultmodel.ModelUpdateConsult:
+    properties:
+      content:
+        type: string
+      title:
+        type: string
+    type: object
   fatemodel.GenerateUserFengshui:
     properties:
       user_id:
@@ -327,6 +347,106 @@ paths:
       summary: delete image
       tags:
       - images
+  /post-consult:
+    get:
+      consumes:
+      - application/json
+      description: get consult's posts
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: get consult's posts
+      tags:
+      - post consult
+    post:
+      consumes:
+      - application/json
+      description: create new post consult
+      parameters:
+      - description: User register data
+        in: body
+        name: consult
+        required: true
+        schema:
+          $ref: '#/definitions/consultmodel.CreateConsultModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: create new post consult
+      tags:
+      - post consult
+  /post-consult/{post_id}:
+    put:
+      consumes:
+      - application/json
+      description: update post consult
+      parameters:
+      - description: Post ID
+        in: path
+        name: post_id
+        required: true
+        type: string
+      - description: User register data
+        in: body
+        name: consult
+        required: true
+        schema:
+          $ref: '#/definitions/consultmodel.ModelUpdateConsult'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: update post consult
+      tags:
+      - post consult
+  /post-consult/user/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: get my consult's posts
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: get my consult's posts
+      tags:
+      - post consult
   /post-market:
     get:
       consumes:

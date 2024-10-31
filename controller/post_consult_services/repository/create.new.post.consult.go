@@ -40,7 +40,7 @@ func (store *consultStore) CreateNewConsultPost(input *consultmodel.CreateConsul
 	}
 
 	queryMarket := `
-		insert into markets (post_id, title , content)
+		insert into consults (post_id, title , content)
 		values (:post_id, :title , :content)
 	`
 	if _, err = tx.NamedExec(queryMarket, input.ConsultModel); err != nil {
