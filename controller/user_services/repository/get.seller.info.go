@@ -10,7 +10,7 @@ func (store *userStore) GetSellerInfo(user_id string) ([]usermodel.SellerInfo, e
 	sellerInfos  := []usermodel.SellerInfo{}
 
 	query := `
-		select id, user_id, phone_number, location, address
+		select user_id, phone_number, location, address
 		from seller_info where user_id=?
 	`
 	if err := store.db.Select(&sellerInfos , query, user_id); err != nil {

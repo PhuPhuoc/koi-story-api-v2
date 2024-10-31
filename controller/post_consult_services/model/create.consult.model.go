@@ -1,4 +1,4 @@
-package model
+package consultmodel
 
 type CreateConsultModel struct {
 	PostOfConsultModel
@@ -14,11 +14,7 @@ type PostOfConsultModel struct {
 }
 
 type ConsultModel struct {
-	PostID      string `db:"post_id" json:"-"`
-	ProductName string `db:"product_name" json:"product_name"`
-	Price       int    `db:"price" json:"price"`
-	ProductType string `db:"product_type" json:"product_type"`
-	Color       string `db:"color" json:"color"`
-	Origin      string `db:"origin" json:"origin"`
-	Description string `db:"description" json:"description"`
+	PostID  string `db:"post_id" json:"-"`
+	Title   string `db:"title" json:"title"`
+	Content int    `db:"content" json:"content"`
 }

@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `fates` (
 CREATE TABLE IF NOT EXISTS `user_fengshui` (
     `id` VARCHAR(100) PRIMARY KEY,
     `user_id` VARCHAR(100),
-    `gender` BOOLEAN NOT NULL,
+    `gender` ENUM('male', 'female'),
     `year_of_birth` SMALLINT NOT NULL,
     `fate_id` VARCHAR(100) NOT NULL,
     `direction` VARCHAR(50),
