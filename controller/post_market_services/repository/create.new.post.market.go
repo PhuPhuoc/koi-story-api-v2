@@ -25,6 +25,17 @@ func (store *marketStore) CreateNewPost(input *marketmodel.FormCreatePostMarket)
 		}
 	}()
 
+	var flag bool
+	query_exist_seller := `
+		SELECT EXISTS(SELECT 1 FROM seller_info WHERE user_id=?) AS user_exists;
+	`
+	if err = tx.Get(&flag, query_exist_seller, input.UserID); err != nil {
+		return fmt.Errorf("cannot check seller info exist: %w", err)
+	}
+	if !flag {
+		return fmt.Errorf("seller information is not registered")
+	}
+
 	postID := uuid.New().String()
 	input.ID = postID
 	input.PostType = "market"

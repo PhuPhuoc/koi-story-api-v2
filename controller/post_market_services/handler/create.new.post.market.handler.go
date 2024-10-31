@@ -2,6 +2,7 @@ package markethandler
 
 import (
 	"net/http"
+	"strings"
 
 	marketmodel "github.com/PhuPhuoc/koi-story-api-v2/controller/post_market_services/model"
 	marketrepository "github.com/PhuPhuoc/koi-story-api-v2/controller/post_market_services/repository"
@@ -29,7 +30,11 @@ func createNewPostMarketHandler(db *sqlx.DB) gin.HandlerFunc {
 		}
 		repo := marketrepository.NewPostMarketStore(db)
 		if err := repo.CreateNewPost(&req); err != nil {
-			utils.SendError(c, http.StatusBadRequest, "cannot create new market's post", err.Error())
+			if strings.Contains(err.Error(), "is not registered") {
+				utils.SendError(c, http.StatusBadRequest, err.Error(), "")
+			} else {
+				utils.SendError(c, http.StatusBadRequest, "cannot create new market's post", err.Error())
+			}
 			return
 		}
 		utils.SendSuccess(c, http.StatusOK, "new account registration successful", nil, nil)
