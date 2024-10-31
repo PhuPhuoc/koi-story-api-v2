@@ -10,7 +10,7 @@ func (store *fateStore) GetFates() ([]fatemodel.Fate, error) {
 	fates := []fatemodel.Fate{}
 
 	query := `
-		select id, name from fates
+		select id, element from fates
 	`
 	if err := store.db.Select(&fates, query); err != nil {
 		return nil, fmt.Errorf("cannot get fates: %w", err)

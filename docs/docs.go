@@ -1060,6 +1060,9 @@ const docTemplate = `{
         "fatemodel.GenerateUserFengshui": {
             "type": "object",
             "properties": {
+                "gender": {
+                    "type": "string"
+                },
                 "user_id": {
                     "type": "string"
                 },

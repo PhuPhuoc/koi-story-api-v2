@@ -10,7 +10,7 @@ func (store *fateStore) GetUserFate(user_id string) (*fatemodel.UserFate, error)
 	user_fate := &fatemodel.UserFate{}
 	query := `
 		select
-			u.year_of_birth, u.heavenly_stem, u.earthly_branch, f.name
+			u.year_of_birth, u.direction, u.cung_phi, f.element
 		from
 			user_fengshui u
 		join
@@ -21,5 +21,5 @@ func (store *fateStore) GetUserFate(user_id string) (*fatemodel.UserFate, error)
 	if err := store.db.Get(user_fate, query, user_id); err != nil {
 		return nil, fmt.Errorf("cannot get user's fate: %w", err)
 	}
-	return user_fate, nil	
+	return user_fate, nil
 }

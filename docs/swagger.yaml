@@ -44,6 +44,8 @@ definitions:
     type: object
   fatemodel.GenerateUserFengshui:
     properties:
+      gender:
+        type: string
       user_id:
         type: string
       year_of_birth:

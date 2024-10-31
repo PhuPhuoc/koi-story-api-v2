@@ -1,8 +1,8 @@
 package fatemodel
 
 type UserFate struct {
-	YearOfBirth   int    `db:"year_of_birth" json:"year_of_birth"`
-	FateName      string `db:"name" json:"fate_name"`
-	HeavenlyStem  string `db:"heavenly_stem" json:"heavenly_stem"`
-	EarthlyBranch string `db:"earthly_branch" json:"earthly_branch"`
+	YearOfBirth int    `db:"year_of_birth" json:"year_of_birth"`
+	Element     string `db:"element" json:"element"`
+	Direction   string `db:"direction" json:"direction"`
+	CungPhi     string `db:"cung_phi" json:"cung_phi"`
 }
