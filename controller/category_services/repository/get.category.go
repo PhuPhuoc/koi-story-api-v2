@@ -21,7 +21,7 @@ func (store *categoryStore) GetCategories() ([]categorymodel.CategoriesDisplay, 
 		res_fate := []categorymodel.CateroryFate{}
 
 		query_select_cate := `
-			select f.id, f.name from fates f join category_fate cf on cf.fate_id=f.id where cf.category_id=?
+			select f.id, f.element from fates f join category_fate cf on cf.fate_id=f.id where cf.category_id=?
 		`
 		if err := store.db.Select(&res_fate, query_select_cate, cate.ID); err != nil {
 			return nil, fmt.Errorf("cannot get list categories: %w", err)

@@ -8,7 +8,7 @@ type CategoriesModel struct {
 
 type CateroryFate struct {
 	ID   string `db:"id" json:"id"`
-	Name string `db:"name" json:"name"`
+	Element string `db:"element" json:"element"`
 }
 
 type CategoriesDisplay struct {
