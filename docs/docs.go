@@ -424,6 +424,43 @@ const docTemplate = `{
                 }
             }
         },
+        "/post-blog/{post_id}": {
+            "get": {
+                "description": "get detail of blog's posts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post blog"
+                ],
+                "summary": "get detail of blog's posts",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User ID",
+                        "name": "post_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "data",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/post-consult": {
             "get": {
                 "description": "get consult's posts",
