@@ -8,8 +8,8 @@ import (
 func RegisterPostConsultRoutes(rg *gin.RouterGroup, db *sqlx.DB) {
 	eg := rg.Group("/post-consult")
 	{
-		eg.POST("", createNewPostMarketHandler(db))
-		eg.PUT("/:post_id", updatePostMarketHandler(db))
+		eg.POST("", createNewPostConsultHandler(db))
+		eg.PUT("/:post_id", updatePostConsultHandler(db))
 		eg.GET("", getPostConsultHandler(db))
 		eg.GET("/user/:user_id", getMyPostConsultHandler(db))
 	}

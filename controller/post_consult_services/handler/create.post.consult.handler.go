@@ -20,7 +20,7 @@ import (
 //	@Success		200		{object}	map[string]interface{}			"message success"
 //	@Failure		400		{object}	error							"Bad request error"
 //	@Router			/post-consult [post]
-func createNewPostMarketHandler(db *sqlx.DB) gin.HandlerFunc {
+func createNewPostConsultHandler(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var req consultmodel.CreateConsultModel
 		if err := c.ShouldBindJSON(&req); err != nil {

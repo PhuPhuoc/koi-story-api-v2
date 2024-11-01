@@ -1,4 +1,17 @@
 definitions:
+  blogmodel.CreationBlogModel:
+    properties:
+      author_name:
+        type: string
+      category_id:
+        type: string
+      content:
+        type: string
+      title:
+        type: string
+      user_id:
+        type: string
+    type: object
   categorymodel.CategoryForCreateAndUpdate:
     properties:
       description:
@@ -349,6 +362,32 @@ paths:
       summary: delete image
       tags:
       - images
+  /post-blog:
+    post:
+      consumes:
+      - application/json
+      description: create new post blog
+      parameters:
+      - description: User register data
+        in: body
+        name: consult
+        required: true
+        schema:
+          $ref: '#/definitions/blogmodel.CreationBlogModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: message success
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: create new post blog
+      tags:
+      - post blog
   /post-consult:
     get:
       consumes:

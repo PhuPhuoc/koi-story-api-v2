@@ -348,6 +348,45 @@ const docTemplate = `{
                 }
             }
         },
+        "/post-blog": {
+            "post": {
+                "description": "create new post blog",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post blog"
+                ],
+                "summary": "create new post blog",
+                "parameters": [
+                    {
+                        "description": "User register data",
+                        "name": "consult",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/blogmodel.CreationBlogModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "message success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request error",
+                        "schema": {}
+                    }
+                }
+            }
+        },
         "/post-consult": {
             "get": {
                 "description": "get consult's posts",
@@ -990,6 +1029,26 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "blogmodel.CreationBlogModel": {
+            "type": "object",
+            "properties": {
+                "author_name": {
+                    "type": "string"
+                },
+                "category_id": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
         "categorymodel.CategoryForCreateAndUpdate": {
             "type": "object",
             "properties": {

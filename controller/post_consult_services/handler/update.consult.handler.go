@@ -21,7 +21,7 @@ import (
 //	@Success		200		{object}	map[string]interface{}			"message success"
 //	@Failure		400		{object}	error							"Bad request error"
 //	@Router			/post-consult/{post_id} [put]
-func updatePostMarketHandler(db *sqlx.DB) gin.HandlerFunc {
+func updatePostConsultHandler(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		post_id := c.Param("post_id")
 		if post_id == "" {

@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `blogs` (
     `post_id` VARCHAR(100) PRIMARY KEY,
     `category_id` VARCHAR(100) NOT NULL,
     `author_name` VARCHAR(100) NOT NULL,
+    `title` VARCHAR(200) NOT NULL,
     `content` LONGTEXT NOT NULL,
     CONSTRAINT `fk_blogs_posts`
     FOREIGN KEY (`post_id`) REFERENCES `posts`(`id`)
