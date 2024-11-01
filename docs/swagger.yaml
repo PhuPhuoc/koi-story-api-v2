@@ -388,6 +388,31 @@ paths:
       summary: create new post blog
       tags:
       - post blog
+  /post-blog/category/{category_id}:
+    get:
+      consumes:
+      - application/json
+      description: get blog's posts
+      parameters:
+      - description: User ID
+        in: path
+        name: category_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: data
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad request error
+          schema: {}
+      summary: get blog's posts
+      tags:
+      - post blog
   /post-consult:
     get:
       consumes:
