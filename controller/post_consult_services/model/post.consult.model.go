@@ -2,8 +2,8 @@ package consultmodel
 
 type PostConsult struct {
 	ConsultModelForGet
-	Images   []DetailImage
-	Comments []CommentInPostConsult
+	Images   []DetailImage          `json:"images"`
+	Comments []CommentInPostConsult `json:"comments"`
 }
 
 type ConsultModelForGet struct {
@@ -20,7 +20,7 @@ type DetailImage struct {
 
 type CommentInPostConsult struct {
 	ID        string `db:"id" json:"id"`
-	PostID   string `db:"post_id" json:"-"`
+	PostID    string `db:"post_id" json:"-"`
 	UserID    string `db:"user_id" json:"user_id"`
 	Content   string `db:"content" json:"content"`
 	CreatedAt string `db:"created_at" json:"created_at"`
